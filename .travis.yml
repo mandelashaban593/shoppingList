@@ -1,0 +1,20 @@
+sudo: false
+language: python
+python:
+  - '2.7'
+cache:
+  directories:
+  - $HOME/gcloud/
+
+install:
+  - pip install -t lib -r requirements.txt
+  - pip install virtualenvwrapper
+  - source virtualenvwrapper.sh
+  - add2virtualenv ./lib
+  - pip install coveralls
+
+before_script:
+  - mysql -e 'create database migrate_dev;'
+  - TARGET_DB=$TEST_DB python main.py db upgrade
+
+

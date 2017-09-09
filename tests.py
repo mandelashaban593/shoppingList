@@ -7,7 +7,7 @@ from flask_testing import TestCase
 from app import create_app, db
 from app.models import User, Shoplist
 
-
+# Cool testing classes
 class TestBase(TestCase):
 
     def create_app(self):
